@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const { join } = require('path');
 const auth = require('./auth.json');
 const client = new Discord.Client();
-const roll = require('./roll');
+const roll = require('./commands/roll.js');
 
 client.on('ready', () => {
     console.log(client.user.tag + ":online");
