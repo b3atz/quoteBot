@@ -3,6 +3,7 @@ const { join } = require('path');
 const auth = require('./auth.json');
 const client = new Discord.Client();
 const roll = require('./commands/roll.js');
+const sub = require('./commands/sub.js')
 
 client.on('ready', () => {
     console.log(client.user.tag + ":online");
@@ -38,6 +39,22 @@ function processCommand(receivedMessage){
         }
         catch(err){
             //roll.errorRoll(err);
+            errorFucntion(err);
+        }
+    }
+    if(primaryCommand === "Sub" || primaryCommand === "sub" ){
+        try{
+            //Roll will take and *multipler*d*dice* number and add them to a number or another dice sub
+            if(argumentsCommand.length){
+                ;
+            }else{
+                throw(argumentsCommand.length);
+            }
+            let reply = sub.execute(argumentsCommand);
+            receivedMessage.channel.send(reply);
+        }
+        catch(err){
+            //sub.errorRoll(err);
             errorFucntion(err);
         }
     }
