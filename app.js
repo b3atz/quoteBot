@@ -50,8 +50,7 @@ function processCommand(receivedMessage){
             }else{
                 throw(argumentsCommand.length);
             }
-            let reply = sub.execute(argumentsCommand);
-            receivedMessage.channel.send(reply);
+            let reply = sub.execute(argumentsCommand,receivedMessage);
         }
         catch(err){
             //sub.errorRoll(err);
