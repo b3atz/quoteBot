@@ -15,7 +15,7 @@ module.exports = {
             clientSecret : auth.secretR,
             refreshToken : auth.refreshR
         })
-        if(parseInt(arguments[2]) > 10 || parseInt(arguments[2]) < 0){
+        if(parseInt(arguments[2]) > 10 || parseInt(arguments[2]) < 1){
             throw("Invalid Args");
         }
         //Hot Post:
@@ -69,8 +69,8 @@ module.exports = {
             + "\n Function: q!sub <mode> <sub> <limit> <time>"
             + "\n\n```<mode>:\n  Hot -Gets hot posts for the day\n  Top -Gets top posts"
             + "\n\n<sub>: Name of the Subreddit"
-            + "\n\n<limit>: Limit of the number of posts"
-            + "\n\n<time>: *only use in top mode*```");
+            + "\n\n<limit>: Limits of the number of posts that can be sent (1-10)"
+            + "\n\n<time>: *can only be used in top mode*```");
             return embed;
     }
 }
