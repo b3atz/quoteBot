@@ -63,12 +63,12 @@ module.exports = {
         embed.setColor('#d23929');
         embed.setTitle("Roll");
         embed.setDescription("Error: " + err
-        + "\nFunction: q!roll <roll> <symbol>"
+        + "\nFunction: q!roll <roll> <symbol> <number>"
         + "\n\n```<roll>: <Number of Rolls>d<Sides on dice>"
         + "\n   *Limt: 0-100"
         + "\n\n<symbol>: '+' or '-'"
         + "\n   '-' will only make the next number negative"
-        + "\n\nThis function takes aruments on any order, it will also take normal numbers```");
+        + "\n\nThis function takes aruments in any order, it will also take normal numbers```");
             return embed;
     }
 }
