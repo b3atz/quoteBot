@@ -45,8 +45,4 @@ function processCommand(receivedMessage){
         console.log(err);
     }
 }
-
-function errorFucntion(error){
-    console.log(error);
-}
 client.login(auth.token);
