@@ -1,6 +1,8 @@
+const Discord = require('discord.js');
+
 module.exports = {
     name: "roll",
-    execute(argument){
+    execute(argument,recivedMessage){
         let current = 0;
         let total = 0;
         let reply = "Roll: ";
@@ -54,6 +56,19 @@ module.exports = {
             ++current;
         }
         reply += "= " + total;
-        return reply;
+        recivedMessage.channel.send(reply);
+    },
+    error(err){
+        let embed = new Discord.MessageEmbed();
+        embed.setColor('#d23929');
+        embed.setTitle("Roll");
+        embed.setDescription("Error: " + err
+        + "\nFunction: q!roll <roll> <symbol>"
+        + "\n\n```<roll>: <Number of Rolls>d<Sides on dice>"
+        + "\n   *Limt: 0-100"
+        + "\n\n<symbol>: '+' or '-'"
+        + "\n   '-' will only make the next number negative"
+        + "\n\nThis function takes aruments on any order, it will also take normal numbers```");
+            return embed;
     }
 }

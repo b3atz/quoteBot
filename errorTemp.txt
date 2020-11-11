@@ -1,0 +1,4 @@
+"Error: " + err
++ "\nFunction: "
++ "\n\n```<someArg> - Explnation"
++ "```"

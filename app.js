@@ -3,6 +3,16 @@ const { join } = require('path');
 const auth = require('./auth.json');
 const client = new Discord.Client();
 const roll = require('./commands/roll.js');
+const sub = require('./commands/sub.js');
+const fs = require('fs');
+client.commands = new Discord.Collection();
+
+const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+
+for (const file of commandFiles) {
+    const command = require(`./commands/${file}`);
+    client.commands.set(command.name, command);
+}
 
 client.on('ready', () => {
     console.log(client.user.tag + ":online");
@@ -23,28 +33,16 @@ function processCommand(receivedMessage){
     let splitCommand = fullCommand.split(" ");
     let primaryCommand = splitCommand[0];
     let argumentsCommand = splitCommand.slice(1);
+    primaryCommand.toLowerCase();
+    
+    let command = client.commands.get(primaryCommand);
 
-    if(primaryCommand === "Roll" || primaryCommand === "roll" ){
-        try{
-            //Roll will take and *multipler*d*dice* number and add them to a number or another dice roll
-            if(argumentsCommand.length){
-                ;
-            }else{
-                throw(argumentsCommand.length);
-            }
-            let reply = roll.execute(argumentsCommand);
-            receivedMessage.channel.send(reply);
-
-        }
-        catch(err){
-            //roll.errorRoll(err);
-            errorFucntion(err);
-        }
+    try{
+        command.execute(argumentsCommand,receivedMessage);
+    }catch(err){
+        let reply = command.error(err);
+        receivedMessage.channel.send(reply);
+        console.log(err);
     }
-
-}
-
-function errorFucntion(error){
-    console.log(error);
 }
 client.login(auth.token);
