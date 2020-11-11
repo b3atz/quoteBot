@@ -1,6 +1,4 @@
-```css
-Error:
-Function
-*********
-<someArg> - Explnation
-```
+"Error: " + err
++ "\nFunction: "
++ "\n\n```<someArg> - Explnation"
++ "```"
