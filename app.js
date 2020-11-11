@@ -2,8 +2,6 @@ const Discord = require('discord.js');
 const { join } = require('path');
 const auth = require('./auth.json');
 const client = new Discord.Client();
-const roll = require('./commands/roll.js');
-const sub = require('./commands/sub.js');
 const fs = require('fs');
 client.commands = new Discord.Collection();
 
